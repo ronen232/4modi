@@ -1,0 +1,2 @@
+docker build -t  lesson07 .
+docker run --rm -it --name lesson07
