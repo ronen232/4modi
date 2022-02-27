@@ -1,0 +1,43 @@
+Started by user RS 232 
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/22-02-22/Lesson09_Build_Job06
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (stage1)
+[Pipeline] sh
++ echo 'Ronen shimon'
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (stage2)
+[Pipeline] sh
++ cat ronen.txt
+Ronen shimon
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (stage3)
+[Pipeline] sh
++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          59G   22G   35G  39% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/sda5        59G   22G   35G  39% /var/jenkins_home
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (stage4)
+[Pipeline] sh
++ rm -r /tmp
+[Pipeline] sh
++ mkdir /tmp
++ mv ronen.txt /tmp/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

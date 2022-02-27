@@ -1,0 +1,10 @@
+Started by user RS 232 
+Running as SYSTEM
+Building remotely on worker-172.18.0.3-5fa280d2 (swarm agent_1) in workspace /var/jenkins_home/worker/workspace/22-02-22/Lesson09_Build_Job02
+[Lesson09_Build_Job02] $ /bin/bash /tmp/jenkins10369343844747546753.sh
+Ronen shimon
+Started calculate disk usage of build
+Finished Calculation of disk usage of build in 0 seconds
+Started calculate disk usage of workspace
+Finished Calculation of disk usage of workspace in 0 seconds
+Finished: SUCCESS

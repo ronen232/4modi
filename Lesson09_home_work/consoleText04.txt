@@ -1,0 +1,13 @@
+Started by user RS 232 
+Running as SYSTEM
+[lockable-resources] acquired lock on []
+Building remotely on worker-172.18.0.3-5fa280d2 (swarm agent_1) in workspace /var/jenkins_home/worker/workspace/22-02-22/Lesson09_Build_Job04
+[Lesson09_Build_Job04] $ /bin/bash /tmp/jenkins13705746871236141512.sh
+Ronen shimon
+-rw-r--r-- 1 jenkins jenkins 13 Feb 27 07:46 /external/ronen.txt
+-rw-r--r-- 1 jenkins jenkins 13 Feb 27 07:46 /external/newfolder01/ronen.txt
+Started calculate disk usage of build
+Finished Calculation of disk usage of build in 0 seconds
+Started calculate disk usage of workspace
+Finished Calculation of disk usage of workspace in 0 seconds
+Finished: SUCCESS
