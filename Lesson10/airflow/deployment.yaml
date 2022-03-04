@@ -1,0 +1,29 @@
+
+# apiVersion - Kubernetes API version
+# kind - the type of object you want to create
+# metadata - info about the object so that it can be uniquely identified
+# spec - desired state of the object
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  airflowapp
+  labels:
+    app: airflow
+spec:
+  selector:
+    matchLabels:
+      app: airflow
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: airflow
+    spec:
+      containers:
+      - name: airflow
+        image: puckel/docker-airflow
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
