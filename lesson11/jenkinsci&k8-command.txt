@@ -1,0 +1,56 @@
+====Get Repo Info===
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+
+==== Instaling Jenkins & K8 plugin using helm ====
+##helm install my-release --set jenkinsUser=admin --set jenkinsPassword=password --set service.type=NodePort bitnami/jenkins
+helm install my-jenkins_k8 jenkins/jenkins --set jenkinsUser=ronen --set jenkinsPassword=1234
+======================================
+helm install my-jenkins-k8 jenkins/jenkins
+======================================
+
+NAME: my-jenkins-k8
+LAST DEPLOYED: Sat Mar 12 14:48:40 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get your 'admin' user password by running:
+  kubectl exec --namespace default -it svc/my-jenkins-k8 -c jenkins -- /bin/cat /run/secrets/chart-admin-password && echo
+ ## The first secret key for the Jenkins is : "q7KTlHNmnETVn0pXjAKMOX" ##
+
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+  echo http://127.0.0.1:8080
+  http://127.0.0.1:8080
+
+
+  kubectl --namespace default port-forward svc/my-jenkins-k8 8080:8080
+
+## Forwarding from 127.0.0.1:8080 -> 8080
+   Forwarding from [::1]:8080 -> 8080  ##
+
+open shell /bin/bash on Jenkins master
+kubectl exec --namespace default --stdin --tty svc/my-jenkins-k8 -- /bin/bash
+
+3. Login with the password from step 1 and the username: admin
+
+4. Configure security realm and authorization strategy
+5. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http:///configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
+
+For more information on running Jenkins on Kubernetes, visit:
+https://cloud.google.com/solutions/jenkins-on-container-engine
+
+For more information about Jenkins Configuration as Code, visit:
+https://jenkins.io/projects/jcasc/
+
+
+NOTE: Consider using a custom image with pre-installed plugins
+
+
+
+
+
+
+helm upgrade [RELEASE_NAME] jenkins/jenkins [flags]
+## Uninstall Chart ##
+helm uninstall my-jenkins_k8
