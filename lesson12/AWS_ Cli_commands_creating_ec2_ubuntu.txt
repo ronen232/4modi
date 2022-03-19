@@ -1,0 +1,123 @@
+# Getting your public ip:
+curl http://ifconfig.me/ip
+
+# Creating a security group:
+aws ec2 create-security-group --group-name rs232 --description "My security group"
+
+# Authorize the security group ingress:shh
+aws ec2 authorize-security-group-ingress \
+    --group-id sg-018853ab29ce5c1f6 \
+    --protocol all \
+    --port all \
+    --cidr 83.130.72.xx/32
+I have change the IP , due to security proteted my IP
+
+
+(venv) ronen@ronen-ubuntu01:~/dev/modi/aws-demo$ aws ec2 run-instances --image-id ami-04505e74c0741db8d --count 1 --instance-type t2.micro --key-name ubuntu-devops-experts --security-group-ids sg-018853ab29ce5c1f6
+---------------------------------------------------------------------
+|                           RunInstances                            |
++---------------------------+---------------------------------------+
+|  OwnerId                  |  050345191936                         |
+|  ReservationId            |  r-04fb34864b226428a                  |
++---------------------------+---------------------------------------+
+||                            Instances                            ||
+|+------------------------+----------------------------------------+|
+||  AmiLaunchIndex        |  0                                     ||
+||  Architecture          |  x86_64                                ||
+||  ClientToken           |  739e3e5f-1d1b-4088-a962-3a7417b956b1  ||
+||  EbsOptimized          |  False                                 ||
+||  EnaSupport            |  True                                  ||
+||  Hypervisor            |  xen                                   ||
+||  ImageId               |  ami-04505e74c0741db8d                 ||
+||  InstanceId            |  i-00b6b6e5e86498754                   ||
+||  InstanceType          |  t2.micro                              ||
+||  KeyName               |  ubuntu-devops-experts                 ||
+||  LaunchTime            |  2022-03-19T17:20:57.000Z              ||
+||  PrivateDnsName        |  ip-172-31-82-116.ec2.internal         ||
+||  PrivateIpAddress      |  172.31.82.116                         ||
+||  PublicDnsName         |                                        ||
+||  RootDeviceName        |  /dev/sda1                             ||
+||  RootDeviceType        |  ebs                                   ||
+||  SourceDestCheck       |  True                                  ||
+||  StateTransitionReason |                                        ||
+||  SubnetId              |  subnet-03c13b448aa92e0e5              ||
+||  VirtualizationType    |  hvm                                   ||
+||  VpcId                 |  vpc-00c6c7a3e1caf23d6                 ||
+|+------------------------+----------------------------------------+|
+|||               CapacityReservationSpecification                |||
+||+--------------------------------------------------+------------+||
+|||  CapacityReservationPreference                   |  open      |||
+||+--------------------------------------------------+------------+||
+|||                          CpuOptions                           |||
+||+-------------------------------------------------+-------------+||
+|||  CoreCount                                      |  1          |||
+|||  ThreadsPerCore                                 |  1          |||
+||+-------------------------------------------------+-------------+||
+|||                        EnclaveOptions                         |||
+||+----------------------------------+----------------------------+||
+|||  Enabled                         |  False                     |||
+||+----------------------------------+----------------------------+||
+|||                        MetadataOptions                        |||
+||+-------------------------------------------+-------------------+||
+|||  HttpEndpoint                             |  enabled          |||
+|||  HttpProtocolIpv6                         |  disabled         |||
+|||  HttpPutResponseHopLimit                  |  1                |||
+|||  HttpTokens                               |  optional         |||
+|||  InstanceMetadataTags                     |  disabled         |||
+|||  State                                    |  pending          |||
+||+-------------------------------------------+-------------------+||
+|||                          Monitoring                           |||
+||+--------------------------+------------------------------------+||
+|||  State                   |  disabled                          |||
+
+
+aws ec2 describe-instances --query 'Reservations[].Instances[].PublicDnsName' --output table
+
+# Get the just created instance public IP
+ec2-3-82-214-135.compute-1.amazonaws.com
+
+ssh ubuntu@ec2-3-82-214-135.compute-1.amazonaws.com
+
+install updates
+sudo apt update -y
+install docker
+install docker compose
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# How  to create ubuntu 20.04 linux machine
+aws ec2 run-instances --image-id ami-04505e74c0741db8d --count 1 --instance-type t2.micro --key-name ubuntu-devops-experts --security-group-ids sg-018853ab29ce5c1f6
+
+
+# Get the just created instance public IP
+aws ec2 describe-instances --query 'Reservations[].Instances[].PublicDnsName' --output table
+
+# Gett the currently running instances
+aws ec2 describe-instances --query 'Reservations[].Instances[].InstanceId'
+
+# When finished terminated the ec2 machine
+
+# Terminate instances:
+aws ec2 stop-instances --instance-ids i-00b6b6e5e86498754   --output table
+aws ec2 start-instances --instance-ids i-00b6b6e5e86498754   --output table
+aws ec2 terminate-instances --instance-ids i-00b6b6e5e86498754   --output table
