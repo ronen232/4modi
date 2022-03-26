@@ -1,0 +1,11 @@
+docker build -t my-first-flask .
+docker run --rm -p 8083:80 -d --name my-flask my-first-flask
+# Copy a file into container:
+docker cp get.py my-flask:/app
+
+# Running a command on a running container
+docker exec -i my-flask python -c 'import requests;r = requests.get("http://localhost:8083");print(r.text)'
+
+
+
+
