@@ -1,0 +1,8 @@
+---
+- name: create_file_Handler_No1
+  debug:
+    msg: "Message from Handler Number 1"
+- name: echo_txt_to_file_Handler_No2
+  debug:
+    msg: "Message from Handler Number 2"
+

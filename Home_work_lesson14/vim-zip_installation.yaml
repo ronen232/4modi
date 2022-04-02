@@ -1,0 +1,19 @@
+- hosts: servers
+  tasks:
+  - name:  Install Vim
+    apt: name=vim state=present
+    when: ansible_os_family == "Debian"
+  - name: Install zip
+    apt: name=zip state=present
+    when: ansible_os_family == "Debian"
+  - name: Install zip
+    apt: name=zip state=present
+    when: ansible_os_family == "Debian"
+  - name: Uinsatll zip
+    apt: name=zip state=absent
+  - name: Uinstall unzip
+    apt: name=unzip state=absent
+  - name: UInstall Vim
+    apt: name=vim state=absent
+
+

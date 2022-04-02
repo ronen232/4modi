@@ -1,0 +1,7 @@
+---
+- name: install_Handler_No1
+  debug:
+    msg: "Message from Handler Number 1 my var {{ my_var_vim }}"
+- name: install_Handler_No2
+  debug:
+    msg: "Message from Handler Number 2 my var {{ my_var_zip }}"

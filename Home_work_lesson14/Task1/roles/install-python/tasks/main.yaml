@@ -1,0 +1,14 @@
+ ---
+ hosts: servers
+  tasks:
+  - name:  Install Vim
+  apt:
+      name=vim 
+      state=present
+      when: ansible_os_family == "Debian"
+  notify: install_Handler_No1
+
+
+
+
+-
